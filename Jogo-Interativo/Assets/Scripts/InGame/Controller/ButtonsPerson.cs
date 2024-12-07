@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class ButtonsPerson : MonoBehaviour
 {
+    [SerializeField] private ControllerScene controllerScene;
+
     [Space(10)]
     [Tooltip("Anexe uma imagem dos botões das pessoas, para evitar conflito.")]
     [SerializeField] Image oldImage;

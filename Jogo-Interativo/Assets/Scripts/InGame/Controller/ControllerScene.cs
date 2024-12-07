@@ -9,7 +9,7 @@ public class ControllerScene : MonoBehaviour
 
     [Header("Game Objects")]
     [Tooltip("Anexe o Game Object 'Canvas-Choice', que está dentro do Game Object 'Choice'.")]
-    [SerializeField] GameObject CanvasChoiceGO;
+    public GameObject CanvasChoiceGO;
 
     [Header("Text")]
     [Tooltip("Associe o Texto do Game Object 'Content' aqui, que está dentro de 'Canvas-Chat'.")]
@@ -31,10 +31,6 @@ public class ControllerScene : MonoBehaviour
     [HideInInspector] public string bernadoCostaText;
     [HideInInspector] public string monicaSantanaText;
 
-
-    [HideInInspector] public byte troopValue = 30;
-    private byte _newLevelValue = 0;
-
     [Header("Levels")]
     [SerializeField] private Level1 _level1;
     [SerializeField] private Level2 _level2;
@@ -44,6 +40,12 @@ public class ControllerScene : MonoBehaviour
     [SerializeField] private Level6 _level6;
     [SerializeField] private Level7 _level7;
     private ILevel _currentLevel;
+
+    [Header("Scripts")]
+    public InGameTransition inGameTransition;
+
+    [HideInInspector] public byte troopValue = 30;
+    private byte _newLevelValue = 0;
 
     private void Awake()
     {
@@ -84,12 +86,13 @@ public class ControllerScene : MonoBehaviour
         Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
 
-        Game.transition.targetScene = 0;
-        Game.transition.PlayAnimationClosing();
+        inGameTransition.PlayAnimationTransitionGameOver();
     }
 
     public void ChangeLevel()
     {
+        inGameTransition.PlayAnimationTransitionDay();
+
         _newLevelValue++;
 
         switch (_newLevelValue)

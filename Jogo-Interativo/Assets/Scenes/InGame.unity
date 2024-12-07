@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 263592313}
   - component: {fileID: 263592315}
   - component: {fileID: 263592314}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text-Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,6 +1151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca38a65f7ad90247be5bccd9a7e7afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TransitionText: {fileID: 263592314}
+  _canvasGameOverGO: {fileID: 821480180}
+  _animator: {fileID: 295818992}
 --- !u!1 &369443999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,6 +2192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3315721bd6f89c14ba42afa267cec396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controllerScene: {fileID: 0}
   oldImage: {fileID: 585001226}
   image:
   - {fileID: 585001226}
@@ -4956,7 +4960,7 @@ GameObject:
   - component: {fileID: 1913059905}
   - component: {fileID: 1913059907}
   - component: {fileID: 1913059906}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background-Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5064,7 +5068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuInGame: {fileID: 7037740661565956195, guid: f6180aeeee1c60a42814781f240ea07d, type: 3}
-  CanvasChoiceGO: {fileID: 0}
+  CanvasChoiceGO: {fileID: 286870621}
   chatText: {fileID: 980881697}
   troopText: {fileID: 1371332221}
   interactText: {fileID: 1358103449}
@@ -5080,7 +5084,6 @@ MonoBehaviour:
   heitorFariasText: 
   bernadoCostaText: 
   monicaSantanaText: 
-  troopValue: 30
   _level1: {fileID: 1236443670}
   _level2: {fileID: 159023089}
   _level3: {fileID: 1463525213}
@@ -5088,6 +5091,8 @@ MonoBehaviour:
   _level5: {fileID: 434298654}
   _level6: {fileID: 129722245}
   _level7: {fileID: 1552377570}
+  inGameTransition: {fileID: 295818993}
+  troopValue: 30
 --- !u!114 &1985911274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,7 +5201,7 @@ GameObject:
   - component: {fileID: 2090465871}
   - component: {fileID: 2090465870}
   - component: {fileID: 2090465869}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas-Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5275,7 +5280,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -5284,7 +5289,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!20 &1290397408135416849
 Camera:

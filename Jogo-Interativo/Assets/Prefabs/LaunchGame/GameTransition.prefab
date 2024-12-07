@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2709930171827705297}
   - component: {fileID: 8164329315241276834}
   - component: {fileID: 141989847444420400}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas-Transition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 6549486620576155763}
   - component: {fileID: 711538961275652561}
   - component: {fileID: 3434424756917718152}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GetCamera : MonoBehaviour
+public class SetCamera : MonoBehaviour
 {
     [SerializeField] Canvas[] canvas;
 

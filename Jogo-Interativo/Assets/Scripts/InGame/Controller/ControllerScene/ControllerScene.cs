@@ -1,7 +1,8 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControllerScene : MonoBehaviour
+public partial class ControllerScene : MonoBehaviour
 {
     [Header("Prefabs")]
     [Tooltip("Anexe o prefab do MenuInGame aqui.")]
@@ -13,23 +14,22 @@ public class ControllerScene : MonoBehaviour
 
     [Header("Text")]
     [Tooltip("Associe o Texto do Game Object 'Content' aqui, que está dentro de 'Canvas-Chat'.")]
-    public Text chatText;
+    public TextMeshProUGUI chatText;
     [Tooltip("Associe o Texto do Game Object 'Text-Troop' aqui, que está dentro de 'Canvas-Troop'.")]
     public Text troopText;
     [Tooltip("Associe o Texto do Game Object 'Text-Interact' aqui, que está dentro de 'Canvas-Interact'.")]
+    public Text dateText;
+    [Tooltip("Associe o Texto do Game Object 'Text-Interact' aqui, que está dentro de 'Canvas-Interact'.")]
     public Text interactText;
-    public Text carlosHenriqueButtonText;
-    public Text joaquimSilvaButtonText;
-    public Text amandaSoaresButtonText;
-    public Text heitorFariasButtonText;
-    public Text bernadoCostaButtonText;
-    public Text monicaSantanaButtonText;
-    [HideInInspector] public string carlosHenriqueText;
-    [HideInInspector] public string joaquimSilvaText;
-    [HideInInspector] public string amandaSoaresText;
-    [HideInInspector] public string heitorFariasText;
-    [HideInInspector] public string bernadoCostaText;
-    [HideInInspector] public string monicaSantanaText;
+    [Tooltip("Associe o texto de todos os botões relacionados as pessoas, aqui.")]
+    public Text[] personButtonText;
+    //Index 0 = Carlos Henrique
+    //Index 1 = Joaquim Silva
+    //Index 2 = Amanda Soares
+    //Index 3 = Heitor Farias
+    //Index 4 = Bernado Costa
+    //Index 5 = Monica Santana
+    [HideInInspector] public string[] personText = new string[6];
 
     [Header("Levels")]
     [SerializeField] private Level1 _level1;
@@ -43,12 +43,16 @@ public class ControllerScene : MonoBehaviour
 
     [Header("Scripts")]
     public InGameTransition inGameTransition;
+    public ButtonsPerson buttonPerson;
 
+    //Geral
     [HideInInspector] public byte troopValue = 30;
     private byte _newLevelValue = 0;
 
     private void Awake()
     {
+        Game.manager.controllerScene = this;
+
         //Serve para gerar intancia dos Game Objects
         if (Game.manager.instantiatedObjectsInGame == false)
         {
@@ -58,6 +62,9 @@ public class ControllerScene : MonoBehaviour
 
         //Aplicando Level
         _currentLevel = _level1;
+
+        //Anexando o texto inicial
+        InitialDialog();
     }
 
     private void Start()
@@ -74,12 +81,11 @@ public class ControllerScene : MonoBehaviour
         //Habilitando os comandos do jogador.
         Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
+
+        Game.manager.controllerScene = null;
     }
 
-    public void ExecuteAction()
-    {
-        _currentLevel.Execute();
-    }
+    public void ExecuteAction() => _currentLevel.Execute();
 
     public void GameOver()
     {
@@ -89,10 +95,10 @@ public class ControllerScene : MonoBehaviour
         inGameTransition.PlayAnimationTransitionGameOver();
     }
 
+    public void NextDay() => inGameTransition.PlayAnimationTransitionDay();
+
     public void ChangeLevel()
     {
-        inGameTransition.PlayAnimationTransitionDay();
-
         _newLevelValue++;
 
         switch (_newLevelValue)

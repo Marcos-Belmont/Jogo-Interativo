@@ -78,8 +78,9 @@ public class GameConfiguration : MonoBehaviour
 
         DefineResolution();
 
-        //Relacionado ao volume e a sensibilidade.
+        //Relacionado ao volume
         _sliderVolume.value = Game.save.volume;
+        NewVolume();
     }
 
     //Método utilizado para definir a resolução.
@@ -101,6 +102,47 @@ public class GameConfiguration : MonoBehaviour
         Screen.SetResolution(int.Parse(width), int.Parse(height), FullScreenMode.FullScreenWindow, Screen.currentResolution.refreshRateRatio);
     }
 
+    //Método utilizado para definir o volume.
+    private void NewVolume()
+    {
+        switch (_sliderVolume.value)
+        {
+            case 10:
+                _volume.SetFloat(_VOLUME, 20);
+                break;
+            case 9:
+                _volume.SetFloat(_VOLUME, 16);
+                break;
+            case 8:
+                _volume.SetFloat(_VOLUME, 12);
+                break;
+            case 7:
+                _volume.SetFloat(_VOLUME, 8);
+                break;
+            case 6:
+                _volume.SetFloat(_VOLUME, 4);
+                break;
+            case 5:
+                _volume.SetFloat(_VOLUME, 0);
+                break;
+            case 4:
+                _volume.SetFloat(_VOLUME, -5);
+                break;
+            case 3:
+                _volume.SetFloat(_VOLUME, -10);
+                break;
+            case 2:
+                _volume.SetFloat(_VOLUME, -15);
+                break;
+            case 1:
+                _volume.SetFloat(_VOLUME, -20);
+                break;
+            default:
+                _volume.SetFloat(_VOLUME, -80);
+                break;
+        }
+    }
+
     #region BOTÕES DROPDOWN
     public void DropdownResolution()
     {
@@ -108,10 +150,6 @@ public class GameConfiguration : MonoBehaviour
 
         DefineResolution();
     }
-    #endregion
-
-    #region BOTÕES SLIDER
-    public void VolumeSlider() => Game.save.volume = (byte)_sliderVolume.value;
     #endregion
 
     #region BOTÕES DE ENCERRAR AS CONFIGURAÇÕES
@@ -124,43 +162,13 @@ public class GameConfiguration : MonoBehaviour
 
         //Volume
         if (_sliderVolume.value != Game.save.volume)
-            switch (Game.save.volume)
-            {
-                case 10:
-                    _volume.SetFloat(_VOLUME, 20);
-                    break;
-                case 9:
-                    _volume.SetFloat(_VOLUME, 16);
-                    break;
-                case 8:
-                    _volume.SetFloat(_VOLUME, 12);
-                    break;
-                case 7:
-                    _volume.SetFloat(_VOLUME, 8);
-                    break;
-                case 6:
-                    _volume.SetFloat(_VOLUME, 4);
-                    break;
-                case 5:
-                    _volume.SetFloat(_VOLUME, 0);
-                    break;
-                case 4:
-                    _volume.SetFloat(_VOLUME, -5);
-                    break;
-                case 3:
-                    _volume.SetFloat(_VOLUME, -10);
-                    break;
-                case 2:
-                    _volume.SetFloat(_VOLUME, -15);
-                    break;
-                case 1:
-                    _volume.SetFloat(_VOLUME, -20);
-                    break;
-                default:
-                    _volume.SetFloat(_VOLUME, -80);
-                    break;
-            }
+        {
+            NewVolume();
+            Game.save.volume = (byte)_sliderVolume.value;
+        }
         #endregion
+
+        Game.save.SetAllSavesConfigurations();
 
         configChild.SetActive(false);
         foreach (GameObject gO in exitConfig)

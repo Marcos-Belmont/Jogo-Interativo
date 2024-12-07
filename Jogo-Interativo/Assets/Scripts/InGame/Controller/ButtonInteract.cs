@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class ButtonInteract : MonoBehaviour
 {
-    [SerializeField] private ControllerScene controller;
+    [SerializeField] AudioSource audioSource;
 
-    public void Interact() => controller.ExecuteAction();
+    public void Interact()
+    {
+        Game.manager.controllerScene.ExecuteAction();
+        audioSource.Play();
+    }
 }

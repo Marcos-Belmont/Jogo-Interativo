@@ -15,6 +15,8 @@ public class InGameTransition : MonoBehaviour
 
     public void PlayAnimationTransitionGameOver() => _animator.Play(_IN_GAME_TRANSITION_GAME_OVER);
 
+    public void ChangeLevel() => Game.manager.controllerScene.ChangeLevel();
+
     public void PlayAnimationTransitionChangeScene()
     {
         _canvasGameOverGO.SetActive(true);

@@ -3,18 +3,16 @@ using UnityEngine;
 public class MenuInGame : MonoBehaviour
 {
     [Header("Game Objects")]
-    [SerializeField] GameObject CanvasGO;
+    public GameObject CanvasGO;
     [SerializeField] GameObject buttonsMenu;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         //Serve para anexar o Game Objects ao script do options, para ele poder sair das opções e retornar pro ponto indicado do menu
         Game.config.exitConfig = new GameObject[1];
         Game.config.exitConfig[0] = buttonsMenu;
 
-        Game.input.menuInGame = CanvasGO;
+        Game.manager.menuInGame = this;
     }
 
     #region MÉTODO DOS BOTÕES
@@ -29,12 +27,13 @@ public class MenuInGame : MonoBehaviour
     }
     public void ButtonExit()
     {
-        Game.transition.ChangeScene(0);
+        buttonsMenu.SetActive(false);
         Game.manager.instantiatedObjectsInGame = false;
-        Game.input.menuInGame = null;
+        Game.manager.menuInGame = null;
         Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
-        Destroy(gameObject);
+        Game.transition.targetScene = 0;
+        Game.transition.PlayAnimationClosing();
     }
     #endregion
 }

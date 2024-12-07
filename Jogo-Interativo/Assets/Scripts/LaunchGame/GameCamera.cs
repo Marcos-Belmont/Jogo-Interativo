@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 
 public class GameCamera : MonoBehaviour
 {
+    public Camera cam;
     public CinemachineCamera cC;
 
     private void Awake()

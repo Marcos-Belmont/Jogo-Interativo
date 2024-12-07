@@ -3,8 +3,6 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    [HideInInspector] public GameObject menuInGame; //Pega o gameobject do canvas do Menu In Game.
-
     private PlayerInputActions playerInputActions; //Variável responsável pelo mapeamento dos inputs.
 
     private void Awake()
@@ -68,14 +66,10 @@ public class GameInput : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext context)
     {
-        //Game.manager.player.Interact();
-        Debug.Log("Interagiu");
+        //Debug.Log("Interagiu");
     }
 
-    private void OnPause(InputAction.CallbackContext context)
-    {
-        try { if (menuInGame != null) menuInGame.SetActive(true); } catch (System.NullReferenceException) { Debug.Log("Pause falhou!"); }
-    }
+    private void OnPause(InputAction.CallbackContext context) => Game.manager.menuInGame.CanvasGO.SetActive(true);
 
     #endregion
 }

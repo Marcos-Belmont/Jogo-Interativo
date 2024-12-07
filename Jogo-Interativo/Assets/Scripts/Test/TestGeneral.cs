@@ -16,6 +16,9 @@ public class TestGeneral : MonoBehaviour
             Game.instantiated = true;
             Instantiate(game);
         }
+
+        //Serve para validar a troca de animações das transições.
+        Game.manager.isPlay = true;
     }
 #endif
 }

@@ -31,19 +31,26 @@ public class MainMenu : MonoBehaviour
         Game.config.exitConfig[1] = buttonsMenu;
     }
 
-    #region BOTÕES DO MENU
-    public void ButtonPlay()
+    public void Start()
     {
-        //Game.options.ClearTextMethod();
-        Game.transition.ChangeScene(1);
+        if (Game.manager.isPlay == true)
+            Game.transition.PlayAnimationOpening();
     }
+
+    #region BOTÕES DO MENU
+    public void ButtonPlay() 
+    {
+        Game.manager.isPlay = true;
+
+        //Mudando para a outra scene
+        Game.transition.targetScene = 1;
+        Game.transition.PlayAnimationClosing();
+    } 
     public void ButtonConfig()
     {
         areaInformation.SetActive(false);
         buttonsMenu.SetActive(false);
         Game.config.configChild.SetActive(true);
-
-        Debug.Log("Configurations");
     }
     public void ButtonExit() => Application.Quit();
     #endregion

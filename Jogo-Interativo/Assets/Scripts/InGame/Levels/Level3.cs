@@ -171,7 +171,7 @@ public class Level3 : MonoBehaviour, ILevel
 
             case 10:
                 Game.manager.controllerScene.CarlosHenrique("\n\n<Color=#28AB3C>João Santana -> Pode deixar cara, eu ainda estarei aqui para te dar todo o apoio do " +
-                    "univero!.</Color>");
+                    "universo!.</Color>");
 
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA RECEBER UMA RESPOSTA DE CARLOS HENRIQUE";
 

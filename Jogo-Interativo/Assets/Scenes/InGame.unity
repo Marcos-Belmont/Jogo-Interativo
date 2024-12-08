@@ -3839,11 +3839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
       propertyPath: testLevel
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
       propertyPath: targetLevel
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
       propertyPath: choice.Array.size

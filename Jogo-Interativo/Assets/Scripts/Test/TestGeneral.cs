@@ -15,7 +15,7 @@ public class TestGeneral : MonoBehaviour
     [Tooltip("Quando ativo, permite testar em que level começa.")]
     public bool testLevel;
     [Tooltip("Determina em que level começará o jogo.")]
-    [Range(2,7)]
+    [Range(2,6)]
     public byte targetLevel;
     [Tooltip("Serve para determinar as escolhas. Coloque a mesma quantidade, ou mais, de escolhas que existe no 'ControllerScene'.")]
     public bool[] choice;

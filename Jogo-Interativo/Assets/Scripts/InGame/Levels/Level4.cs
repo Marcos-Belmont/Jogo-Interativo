@@ -175,7 +175,7 @@ public class Level4 : MonoBehaviour, ILevel
                 Game.manager.controllerScene.dateText.text = "19/12/5281\n------------------\n14:48";
                 break;
             case 14:
-                Game.manager.controllerScene.BernadoCosta("\n\n<Color=#28AB3C>João Santana -> Tá tudo bem, eu sei que você só queria fazer o que achava o certo." +
+                Game.manager.controllerScene.BernadoCosta("\n\n<Color=#28AB3C>João Santana -> Tá tudo bem, eu sei que você só queria fazer o que achava o certo. " +
                     "Eu te perdoo.</Color>");
 
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE BERNADO COSTA";

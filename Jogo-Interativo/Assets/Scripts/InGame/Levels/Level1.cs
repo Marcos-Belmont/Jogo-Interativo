@@ -4,10 +4,7 @@ public class Level1 : MonoBehaviour, ILevel
 {
     private byte _stage = 0;
 
-    public void PrepareLevel()
-    {
-        
-    }
+    public void PrepareLevel() { }
 
     public void Execute()
     {

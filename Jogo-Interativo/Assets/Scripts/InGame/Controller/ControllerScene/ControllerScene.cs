@@ -45,7 +45,6 @@ public partial class ControllerScene : MonoBehaviour
     [SerializeField] private Level4 _level4;
     [SerializeField] private Level5 _level5;
     [SerializeField] private Level6 _level6;
-    [SerializeField] private Level7 _level7;
     private ILevel _currentLevel;
 
     [Header("Scripts")]
@@ -53,7 +52,7 @@ public partial class ControllerScene : MonoBehaviour
     public ButtonsPerson buttonPerson;
 
     //Geral
-    [HideInInspector] public byte fleetValue = 30;
+    [HideInInspector] public byte fleetValue = 31;
     private byte _newLevelValue = 1;
 
     private void Awake()
@@ -129,45 +128,23 @@ public partial class ControllerScene : MonoBehaviour
         {
             case 2:
                 _currentLevel = _level2;
-
-                dateText.text = "10/11/5281\n------------------\n11:00";
-                inGameTransition.TransitionText.text = "DIA 21";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+                _currentLevel.PrepareLevel();
                 break;
             case 3:
                 _currentLevel = _level3;
-
-                dateText.text = "19/11/5281\n------------------\n15:00";
-                inGameTransition.TransitionText.text = "DIA 30";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA CARLOS HENRIQUE";
+                _currentLevel.PrepareLevel();
                 break;
             case 4:
                 _currentLevel = _level4;
-
-                dateText.text = "19/12/5281\n------------------\n07:00";
-                inGameTransition.TransitionText.text = "DIA 60";
-                interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE HEITOR FARIAS";
+                _currentLevel.PrepareLevel();
                 break;
             case 5:
                 _currentLevel = _level5;
-
-                dateText.text = "30/12/5281\n------------------\n03:00";
-                inGameTransition.TransitionText.text = "DIA 71";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+                _currentLevel.PrepareLevel();
                 break;
             case 6:
                 _currentLevel = _level6;
-
-                dateText.text = "24/01/5282\n------------------\n21:15";
-                inGameTransition.TransitionText.text = "DIA 95";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
-                break;
-            case 7:
-                _currentLevel = _level7;
-
-                dateText.text = "03/02/5282\n------------------\n14:44";
-                inGameTransition.TransitionText.text = "DIA 105";
-                interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE AMANDA SOARES";
+                _currentLevel.PrepareLevel();
                 break;
         }
     }

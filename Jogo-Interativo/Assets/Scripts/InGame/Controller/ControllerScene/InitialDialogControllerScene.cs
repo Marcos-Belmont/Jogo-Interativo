@@ -60,7 +60,7 @@ public partial class ControllerScene
     {
         personText[3] = "<Color=#28AB3C>João Santana -> Heitor, só para confirmar, o ID do seu submarino?</Color>" +
             "" +
-            "\n\nHeitor Farias -> Chefia, o meu é o 11." +
+            "\n\nHeitor Farias -> Chefia, o meu é o 19." +
             "" +
             "\n\n<Color=#28AB3C>João Santana -> Certo, deixei a Amanda comandando os submarinos com os IDs 1 ao 15, você comandará os do 16 ao 30.</Color>" +
             "" +

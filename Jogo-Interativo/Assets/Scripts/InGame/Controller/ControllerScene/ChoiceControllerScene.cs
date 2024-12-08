@@ -11,8 +11,6 @@ public partial class ControllerScene
     //Index 1 = Sobre o casamento de Carlos Henrique
     //Index 2 = Infiltrado no submarino
     //Index 3 = Conflito com submarinos rivais
-    //Index 4 = Consequencias do infiltrado, seria em relação a conversa com Amanda Soares (Com impacto de como Amanda lida com a vida)
-    //Index 5 = Sobre a escolha de fugir ou se esconder de submarinos inimigos
 
     public void ExecuteChoice(bool choice)
     {

@@ -4,6 +4,13 @@ public class Level3 : MonoBehaviour, ILevel
 {
     private byte _stage = 0;
 
+    public void PrepareLevel()
+    {
+        Game.manager.controllerScene.dateText.text = "19/11/5281\n------------------\n15:00";
+        Game.manager.controllerScene.inGameTransition.TransitionText.text = "DIA 30";
+        Game.manager.controllerScene.interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA CARLOS HENRIQUE";
+    }
+
     public void Execute()
     {
         switch (_stage)
@@ -222,6 +229,21 @@ public class Level3 : MonoBehaviour, ILevel
                 break;
 
             case 17:
+                if (Game.manager.controllerScene.choice[2] == true)
+                {
+                    Game.manager.controllerScene.AmandaSoares("\n\n<Color=#28AB3C>João Santana -> Executem o infiltrado!</Color>");
+                }
+                else
+                {
+                    Game.manager.controllerScene.AmandaSoares("\n\n<Color=#28AB3C>João Santana -> Prendam o infiltrado!</Color>");
+                }
+                
+                Game.manager.controllerScene.interactText.text = "CLIQUE PARA RECEBER A RESPOSTA DE AMANDA SOARES";
+
+                Game.manager.controllerScene.dateText.text = "19/11/5281\n------------------\n17:17";
+                break;
+
+            case 18:
                 Game.manager.controllerScene.AmandaSoares("\n\nAmanda Soares -> Assim será feito, como o senhor decidiu!");
 
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE MÔNICA SANTANA";
@@ -229,7 +251,7 @@ public class Level3 : MonoBehaviour, ILevel
                 Game.manager.controllerScene.dateText.text = "19/11/5281\n------------------\n17:17";
                 break;
 
-            case 18:
+            case 19:
                 Game.manager.controllerScene.MonicaSantana("\n\nMônica Santana -> Vivo?");
 
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA RESPONDER UMA MENSAGEM DE MÔNICA SANTANA";
@@ -237,7 +259,7 @@ public class Level3 : MonoBehaviour, ILevel
                 Game.manager.controllerScene.dateText.text = "19/11/5281\n------------------\n19:18";
                 break;
 
-            case 19:
+            case 20:
                 Game.manager.controllerScene.MonicaSantana("\n\n<Color=#28AB3C>João Santana -> Vivo!</Color>");
 
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA ENCERRAR O DIA";
@@ -245,7 +267,7 @@ public class Level3 : MonoBehaviour, ILevel
                 Game.manager.controllerScene.dateText.text = "19/11/5281\n------------------\n19:21";
                 break;
 
-            case 20:
+            case 21:
 #if UNITY_EDITOR
                 if (TestGeneral.instance.testLevel == true)
                 {

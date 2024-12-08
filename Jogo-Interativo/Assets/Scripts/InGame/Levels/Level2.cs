@@ -4,6 +4,13 @@ public class Level2 : MonoBehaviour, ILevel
 {
     private byte _stage = 0;
 
+    public void PrepareLevel()
+    {
+        Game.manager.controllerScene.dateText.text = "10/11/5281\n------------------\n11:00";
+        Game.manager.controllerScene.inGameTransition.TransitionText.text = "DIA 21";
+        Game.manager.controllerScene.interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+    }
+
     public void Execute()
     {
         switch (_stage)

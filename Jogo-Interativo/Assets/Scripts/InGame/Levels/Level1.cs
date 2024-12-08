@@ -18,7 +18,7 @@ public class Level1 : MonoBehaviour, ILevel
                 Game.manager.controllerScene.interactText.text = "CLIQUE PARA ESCOLHER QUAL RESPOSTA DARÁ AO CARLOS HENRIQUE";
                 break;
             case 1:
-                Game.manager.controllerScene.ChangeText("Responda Carlos Henrique","Com toda a certeza!","No limite do possível.");
+                Game.manager.controllerScene.ChangeChoiceText("Responda Carlos Henrique","Com toda a certeza!","No limite do possível.");
 
                 Game.manager.controllerScene.dateText.text = "03/11/5281\n------------------\n13:07";
 

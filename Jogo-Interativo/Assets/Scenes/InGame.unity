@@ -3842,6 +3842,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
+      propertyPath: targetLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
       propertyPath: choice.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -3851,7 +3855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8029141230570463495, guid: 7659c21eae1aced43bce35c6201d9d20, type: 3}
       propertyPath: 'choice.Array.data[1]'
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5921,7 +5925,7 @@ MonoBehaviour:
   m_Direction: 2
   m_Value: 0
   m_Size: 1
-  m_NumberOfSteps: 11
+  m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6613,7 +6617,7 @@ GameObject:
   - component: {fileID: 1059060613}
   - component: {fileID: 1059060612}
   m_Layer: 5
-  m_Name: Canvas-Troop
+  m_Name: Canvas-Fleet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8315,7 +8319,7 @@ GameObject:
   - component: {fileID: 1371332222}
   - component: {fileID: 1371332221}
   m_Layer: 5
-  m_Name: Text-Troop
+  m_Name: Text-Fleet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8373,7 +8377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tropa
+  m_Text: 'Frota
 
     --------------
 
@@ -12782,7 +12786,7 @@ MonoBehaviour:
   _menuInGame: {fileID: 7037740661565956195, guid: f6180aeeee1c60a42814781f240ea07d, type: 3}
   CanvasChoiceGO: {fileID: 286870621}
   chatText: {fileID: 980881699}
-  troopText: {fileID: 1371332221}
+  fleetText: {fileID: 1371332221}
   dateText: {fileID: 350389891}
   _titleChoiceText: {fileID: 2002070852}
   _OptionAChoiceText: {fileID: 1816269842}
@@ -12811,7 +12815,7 @@ MonoBehaviour:
   _level7: {fileID: 1552377570}
   inGameTransition: {fileID: 295818993}
   buttonPerson: {fileID: 828869937}
-  troopValue: 30
+  fleetValue: 30
 --- !u!114 &1985911274
 MonoBehaviour:
   m_ObjectHideFlags: 0

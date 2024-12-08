@@ -195,7 +195,7 @@ public class Level2 : MonoBehaviour, ILevel
                 break;
 
             case 22:
-                Game.manager.controllerScene.ChangeText("Aconselhe Carlos, Sobre O Pedido De Casamento",
+                Game.manager.controllerScene.ChangeChoiceText("Aconselhe Carlos, Sobre O Pedido De Casamento",
                     "Concordar em fazer o pedido de casamento amanhã!", "Não concordar, falar para ele fazer o pedido quando estiver em solo firme e seguro.");
 
                 Game.manager.controllerScene.dateText.text = "10/11/5281\n------------------\n12:59";

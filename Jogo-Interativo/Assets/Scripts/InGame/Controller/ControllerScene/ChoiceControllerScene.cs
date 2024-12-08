@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public partial class ControllerScene : IChoices
+public partial class ControllerScene
 {
-    private IChoices _choice;
-
     private byte _currentChoice = 0;
 
     [Header("Escolhas")]
@@ -22,7 +20,7 @@ public partial class ControllerScene : IChoices
         _currentChoice++;
     }
 
-    public void ChangeText(string Title, string optionA, string optionB)
+    public void ChangeChoiceText(string Title, string optionA, string optionB)
     {
         _titleChoiceText.text = Title;
         _OptionAChoiceText.text = optionA;

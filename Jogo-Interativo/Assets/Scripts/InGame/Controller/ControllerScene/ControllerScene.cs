@@ -17,7 +17,7 @@ public partial class ControllerScene : MonoBehaviour
     [Tooltip("Associe o Texto do Game Object 'Content' aqui, que está dentro de 'Canvas-Chat'.")]
     public TextMeshProUGUI chatText;
     [Tooltip("Associe o Texto do Game Object 'Text-Troop' aqui, que está dentro de 'Canvas-Troop'.")]
-    public Text troopText;
+    public Text fleetText;
     [Tooltip("Associe o Texto do Game Object 'Text-Interact' aqui, que está dentro de 'Canvas-Interact'.")]
     public Text dateText;
     [Tooltip("Associe o Texto do Game Object 'Text-Title-Choice' aqui, que está dentro do Game Object 'Choice'.")]
@@ -53,7 +53,7 @@ public partial class ControllerScene : MonoBehaviour
     public ButtonsPerson buttonPerson;
 
     //Geral
-    [HideInInspector] public byte troopValue = 30;
+    [HideInInspector] public byte fleetValue = 30;
     private byte _newLevelValue = 1;
 
     private void Awake()
@@ -139,14 +139,14 @@ public partial class ControllerScene : MonoBehaviour
 
                 dateText.text = "19/11/5281\n------------------\n15:00";
                 inGameTransition.TransitionText.text = "DIA 30";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA CARLOS HENRIQUE";
                 break;
             case 4:
                 _currentLevel = _level4;
 
                 dateText.text = "19/12/5281\n------------------\n07:00";
                 inGameTransition.TransitionText.text = "DIA 60";
-                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+                interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE HEITOR FARIAS";
                 break;
             case 5:
                 _currentLevel = _level5;

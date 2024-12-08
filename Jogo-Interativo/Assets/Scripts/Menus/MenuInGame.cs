@@ -30,7 +30,6 @@ public class MenuInGame : MonoBehaviour
         buttonsMenu.SetActive(false);
         Game.manager.instantiatedObjectsInGame = false;
         Game.manager.menuInGame = null;
-        Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
         Game.transition.targetScene = 0;
         Game.transition.PlayAnimationClosing();

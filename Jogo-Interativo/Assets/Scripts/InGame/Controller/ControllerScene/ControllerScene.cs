@@ -9,7 +9,8 @@ public partial class ControllerScene : MonoBehaviour
     [SerializeField] GameObject _menuInGame;
 
     [Header("Game Objects")]
-    [Tooltip("Anexe o Game Object 'Canvas-Choice', que está dentro do Game Object 'Choice'.")]
+    [Tooltip("Anexe o Game Object 'Canvas-Choice', que está dentro do Game Object 'Choice'. " +
+        "Serve para possibilitar de o jogador realizar uma escolha dentro do jogo quando ativo este Game Object.")]
     public GameObject CanvasChoiceGO;
 
     [Header("Text")]
@@ -19,6 +20,12 @@ public partial class ControllerScene : MonoBehaviour
     public Text troopText;
     [Tooltip("Associe o Texto do Game Object 'Text-Interact' aqui, que está dentro de 'Canvas-Interact'.")]
     public Text dateText;
+    [Tooltip("Associe o Texto do Game Object 'Text-Title-Choice' aqui, que está dentro do Game Object 'Choice'.")]
+    [SerializeField] Text _titleChoiceText;
+    [Tooltip("Associe o Texto do Game Object 'Text-Option-A-Choice' aqui, que está dentro do Game Object 'Choice'.")]
+    [SerializeField] Text _OptionAChoiceText;
+    [Tooltip("Associe o Texto do Game Object 'Text-Option-B-Choice' aqui, que está dentro do Game Object 'Choice'.")]
+    [SerializeField] Text _OptionBChoiceText;
     [Tooltip("Associe o Texto do Game Object 'Text-Interact' aqui, que está dentro de 'Canvas-Interact'.")]
     public Text interactText;
     [Tooltip("Associe o texto de todos os botões relacionados as pessoas, aqui.")]
@@ -47,7 +54,7 @@ public partial class ControllerScene : MonoBehaviour
 
     //Geral
     [HideInInspector] public byte troopValue = 30;
-    private byte _newLevelValue = 0;
+    private byte _newLevelValue = 1;
 
     private void Awake()
     {
@@ -65,12 +72,31 @@ public partial class ControllerScene : MonoBehaviour
 
         //Anexando o texto inicial
         InitialDialog();
+
+#if UNITY_EDITOR
+        //Aplicando ferramenta de teste para começar em determinado dia
+        if (TestGeneral.instance.testLevel == true)
+        {
+            Debug.Log("Testando o level. Começando a partir do level: " + TestGeneral.instance.targetLevel);
+
+            for (byte i = 0; i < choice.Length; i++)
+            {
+                choice[i] = TestGeneral.instance.choice[i];
+            }
+
+            while(_newLevelValue < TestGeneral.instance.targetLevel)
+            {
+                ExecuteActionLevel();
+            }
+
+            TestGeneral.instance.testLevel = false;
+        }
+#endif
     }
 
     private void Start()
     {
         //Habilitando os comandos do jogador.
-        Game.input.NormalPlayerEnable();
         Game.input.PausePlayerEnable();
 
         Game.transition.PlayAnimationOpening();
@@ -79,17 +105,15 @@ public partial class ControllerScene : MonoBehaviour
     private void OnDestroy()
     {
         //Habilitando os comandos do jogador.
-        Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
 
         Game.manager.controllerScene = null;
     }
 
-    public void ExecuteAction() => _currentLevel.Execute();
+    public void ExecuteActionLevel() => _currentLevel.Execute();
 
     public void GameOver()
     {
-        Game.input.NormalPlayerDisable();
         Game.input.PausePlayerDisable();
 
         inGameTransition.PlayAnimationTransitionGameOver();
@@ -103,23 +127,47 @@ public partial class ControllerScene : MonoBehaviour
 
         switch (_newLevelValue)
         {
-            case 1:
-                _currentLevel = _level2;
-                break;
             case 2:
-                _currentLevel = _level3;
+                _currentLevel = _level2;
+
+                dateText.text = "10/11/5281\n------------------\n11:00";
+                inGameTransition.TransitionText.text = "DIA 21";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
                 break;
             case 3:
-                _currentLevel = _level4;
+                _currentLevel = _level3;
+
+                dateText.text = "19/11/5281\n------------------\n15:00";
+                inGameTransition.TransitionText.text = "DIA 30";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
                 break;
             case 4:
-                _currentLevel = _level5;
+                _currentLevel = _level4;
+
+                dateText.text = "19/12/5281\n------------------\n07:00";
+                inGameTransition.TransitionText.text = "DIA 60";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
                 break;
             case 5:
-                _currentLevel = _level6;
+                _currentLevel = _level5;
+
+                dateText.text = "30/12/5281\n------------------\n03:00";
+                inGameTransition.TransitionText.text = "DIA 71";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
                 break;
             case 6:
+                _currentLevel = _level6;
+
+                dateText.text = "24/01/5282\n------------------\n21:15";
+                inGameTransition.TransitionText.text = "DIA 95";
+                interactText.text = "CLIQUE PARA ENVIAR UMA MENSAGEM PARA HEITOR FARIAS";
+                break;
+            case 7:
                 _currentLevel = _level7;
+
+                dateText.text = "03/02/5282\n------------------\n14:44";
+                inGameTransition.TransitionText.text = "DIA 105";
+                interactText.text = "CLIQUE PARA RECEBER UMA MENSAGEM DE AMANDA SOARES";
                 break;
         }
     }

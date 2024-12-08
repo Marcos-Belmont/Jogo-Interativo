@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5646c342f554a774c9616ed87e40bb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testGeneral: {fileID: 0}
   game: {fileID: 7391128615616302766, guid: 9beb98d3967e2904f825a51734e102bc, type: 3}
   testLevel: 0
-  targetLevel: 1
+  targetLevel: 2
+  choice: 00000000000000

@@ -24,34 +24,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""NormalPlayer"",
-            ""id"": ""82df7a11-2033-4e23-83fe-9bc0faa7c1eb"",
-            ""actions"": [
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""723870f1-9f2c-4e49-bda2-7cb1f321b52b"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""4f296836-2ff5-4190-b6de-a9731c2e3f64"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""PausePlayer"",
             ""id"": ""24cf885c-42be-4395-80b0-716243b861ae"",
             ""actions"": [
@@ -93,9 +65,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // NormalPlayer
-        m_NormalPlayer = asset.FindActionMap("NormalPlayer", throwIfNotFound: true);
-        m_NormalPlayer_Interact = m_NormalPlayer.FindAction("Interact", throwIfNotFound: true);
         // PausePlayer
         m_PausePlayer = asset.FindActionMap("PausePlayer", throwIfNotFound: true);
         m_PausePlayer_Pause = m_PausePlayer.FindAction("Pause", throwIfNotFound: true);
@@ -103,7 +72,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
 
     ~@PlayerInputActions()
     {
-        UnityEngine.Debug.Assert(!m_NormalPlayer.enabled, "This will cause a leak and performance issues, PlayerInputActions.NormalPlayer.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PausePlayer.enabled, "This will cause a leak and performance issues, PlayerInputActions.PausePlayer.Disable() has not been called.");
     }
 
@@ -163,52 +131,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // NormalPlayer
-    private readonly InputActionMap m_NormalPlayer;
-    private List<INormalPlayerActions> m_NormalPlayerActionsCallbackInterfaces = new List<INormalPlayerActions>();
-    private readonly InputAction m_NormalPlayer_Interact;
-    public struct NormalPlayerActions
-    {
-        private @PlayerInputActions m_Wrapper;
-        public NormalPlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interact => m_Wrapper.m_NormalPlayer_Interact;
-        public InputActionMap Get() { return m_Wrapper.m_NormalPlayer; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(NormalPlayerActions set) { return set.Get(); }
-        public void AddCallbacks(INormalPlayerActions instance)
-        {
-            if (instance == null || m_Wrapper.m_NormalPlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_NormalPlayerActionsCallbackInterfaces.Add(instance);
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
-        }
-
-        private void UnregisterCallbacks(INormalPlayerActions instance)
-        {
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
-        }
-
-        public void RemoveCallbacks(INormalPlayerActions instance)
-        {
-            if (m_Wrapper.m_NormalPlayerActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(INormalPlayerActions instance)
-        {
-            foreach (var item in m_Wrapper.m_NormalPlayerActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_NormalPlayerActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public NormalPlayerActions @NormalPlayer => new NormalPlayerActions(this);
-
     // PausePlayer
     private readonly InputActionMap m_PausePlayer;
     private List<IPausePlayerActions> m_PausePlayerActionsCallbackInterfaces = new List<IPausePlayerActions>();
@@ -254,10 +176,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public PausePlayerActions @PausePlayer => new PausePlayerActions(this);
-    public interface INormalPlayerActions
-    {
-        void OnInteract(InputAction.CallbackContext context);
-    }
     public interface IPausePlayerActions
     {
         void OnPause(InputAction.CallbackContext context);

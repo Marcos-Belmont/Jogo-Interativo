@@ -6,6 +6,12 @@ public class Level3 : MonoBehaviour, ILevel
 
     public void Execute()
     {
+        switch (_stage)
+        {
+            case 0: 
+                break;
+        }
+
         _stage++;
     }
 }
